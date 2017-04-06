@@ -2,5 +2,16 @@
 	"ImportPath": "fiscaluno-ws",
 	"GoVersion": "go1.8",
 	"GodepVersion": "v79",
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/emicklei/go-restful",
+			"Comment": "2.2.0-1-g1d2cd46",
+			"Rev": "1d2cd46e1ac9ce6036f014a33a3706f989578de6"
+		},
+		{
+			"ImportPath": "github.com/emicklei/go-restful/log",
+			"Comment": "2.2.0-1-g1d2cd46",
+			"Rev": "1d2cd46e1ac9ce6036f014a33a3706f989578de6"
+		}
+	]
 }
