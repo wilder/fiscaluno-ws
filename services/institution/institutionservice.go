@@ -25,12 +25,12 @@ func New() *restful.WebService {
 func FindInstitution(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
     // here you would fetch user from some persistence system
-    usr := institution.FindInstitution(id)
+    usr := *institution.New(id, "faculdade impacta", 5.4)
     response.WriteEntity(usr)
 }
 
 func GetInstitutionRate(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
-    inst := institution.FindInstitution(id)
-    response.WriteEntity(inst.GetRate())
+    inst := institution.New(id, "faculdade impacta", 5.4)
+    response.WriteEntity(inst.Rate)
 }

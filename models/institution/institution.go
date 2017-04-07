@@ -6,19 +6,6 @@ type Institution struct {
     Rate float32
 }
 
-func FindInstitution(id string) *Institution {
-    institution := &Institution{Id: id, Name: "Faculdade Impacta", Rate: 5.2}
-    return institution
-}
-
-func (institution *Institution) GetId() *string {
-    return &institution.Id
-}
-
-func (institution *Institution) GetName() *string {
-    return &institution.Name
-}
-
-func (institution *Institution) GetRate() *float32 {
-    return &institution.Rate
+func New(id string, name string, rate float32) *Institution {
+    return &Institution{Id:id, Name:name, Rate:rate}
 }
