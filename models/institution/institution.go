@@ -1,4 +1,4 @@
-package models
+package institution
 
 type Institution struct {
     Id string
