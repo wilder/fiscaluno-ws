@@ -14,17 +14,13 @@ func New() *restful.WebService {
         
     service.Route(service.GET("/{institution-id}").To(FindInstitution))
     service.Route(service.GET("/rate/{institution-id}").To(GetInstitutionRate))
-    //service.Route(service.POST("").To(UpdateInstitution))
-    //service.Route(service.PUT("/{institution-id}").To(CreateInstitution))
-    //service.Route(service.DELETE("/{institution-id}").To(RemoveInstitution))
         
     return service
 }
 
-
+// Find Institution by Id
 func FindInstitution(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
-    // here you would fetch user from some persistence system
     usr := *institution.New(id, "faculdade impacta", 5.4)
     response.WriteEntity(usr)
 }
