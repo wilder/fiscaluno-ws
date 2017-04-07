@@ -1,8 +1,8 @@
-package institutionservice
+package institution
 
 import (
     "github.com/emicklei/go-restful"
-    "fiscaluno-ws/models"
+    "fiscaluno-ws/models/institution"
 )
 
 func New() *restful.WebService {
@@ -25,12 +25,12 @@ func New() *restful.WebService {
 func FindInstitution(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
     // here you would fetch user from some persistence system
-    usr := models.FindInstitution(id)
+    usr := institution.FindInstitution(id)
     response.WriteEntity(usr)
 }
 
 func GetInstitutionRate(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
-    institution := models.FindInstitution(id)
-    response.WriteEntity(institution.GetRate())
+    inst := institution.FindInstitution(id)
+    response.WriteEntity(inst.GetRate())
 }
