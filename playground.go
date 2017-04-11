@@ -15,20 +15,18 @@ import (
     messagingSenderId: "284590836348"
  */
 
-type PersonName struct {
-	First string
-	Last string
-}
-
-type Person struct {
-	Name PersonName
-}
 
 func main() {
 
 	f := firego.New("https://***REMOVED***", nil)
-	v := map[string]string{"foo":"bar"}
-	if err := f.Set(v); err != nil {
+	v := "bar"
+	pushedFirego, err := f.Push(v)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var bar string
+	if err := pushedFirego.Value(&bar); err != nil {
 		log.Fatal(err)
 	}
 
