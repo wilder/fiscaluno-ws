@@ -16,7 +16,7 @@ type GeneralRate struct {
 }
 
 // Institution constructor
-func New(id string, desc string, rate float32, ratedBy string, institution institution.Institution) *GeneralRate {
+func New(id, desc, ratedBy string, rate float32, institution institution.Institution) *GeneralRate {
 	return &GeneralRate{
 		Id:id,
 		Description:desc,
