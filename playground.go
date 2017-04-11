@@ -3,6 +3,9 @@ package main
 import (
 	"github.com/zabawaba99/firego"
 	"log"
+	"fiscaluno-ws/models/rate/general"
+	"fiscaluno-ws/models/institution"
+	//"encoding/json"
 )
 
 
@@ -19,8 +22,11 @@ import (
 func main() {
 
 	f := firego.New("https://***REMOVED***", nil)
-	v := "bar"
-	pushedFirego, err := f.Push(v)
+
+	gRate := general.New("f134fqwefq4", "Muito Boaaa", 4.5, "", *institution.New( "f23fn9xsxx090nd3d,", "Faculdade Impacta", 0.0))
+	//gRateJson, err := json.Marshal(gRate)
+
+	pushedFirego, err := f.Push(gRate)
 	if err != nil {
 		log.Fatal(err)
 	}
