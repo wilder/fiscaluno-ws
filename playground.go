@@ -40,7 +40,7 @@ func main() {
 	}*/
 
 	//Testing if Firebase implements DBcontract
-	var db database.DBcontract = database.Firebase{}
+	var db database.DBcontract = database.GetInstance()
 	db.Save(*institution.New("a","a",4.4))
 
 	var v map[string]interface{}

@@ -1,18 +1,29 @@
 package database
 
 import (
+	"sync"
 	"fmt"
 	"github.com/zabawaba99/firego"
 	"reflect"
 	"log"
 )
 
-type Firebase struct {
+type firebase struct {
+}
+
+var instance firebase
+var once sync.Once
+
+func GetInstance() firebase {
+	once.Do(func() {
+		instance = firebase{}
+	})
+	return instance
 }
 
 //creates a new node on firebase of the object passed as argument
 //parameter: Any struct
-func (fb Firebase) Save(object interface{}) {
+func (fb firebase) Save(object interface{}) {
 	nodeName := getType(object)
 	ref := firego.New("https://***REMOVED***/"+nodeName, nil)
 
@@ -25,16 +36,16 @@ func (fb Firebase) Save(object interface{}) {
 	log.Print("saved new "+nodeName)
 }
 
-func (fb Firebase) Update(newValue, conditions[] interface{}) {
+func (fb firebase) Update(newValue, conditions[] interface{}) {
 	fmt.Print("updating...")
 }
 
-func (fb Firebase) Find(node string, conditions[] interface{}) interface{} {
+func (fb firebase) Find(node string, conditions[] interface{}) interface{} {
 	fmt.Print("finding...")
 	return map[string]string{"foo": "1", "bar": "2"}
 }
 
-func (fb Firebase) Delete(conditions[] interface{}) {
+func (fb firebase) Delete(conditions[] interface{}) {
 	fmt.Print("deleting...")
 }
 
