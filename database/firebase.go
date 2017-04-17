@@ -23,3 +23,16 @@ func (fb Firebase) Find(node string, conditions[] interface{}) interface{} {
 func (fb Firebase) Delete(conditions[] interface{}) {
 	fmt.Print("deleting...")
 }
+
+/**
+   gets the node name from a type passed as argument
+   used to get the correct firebase refenrence
+ */
+func getType(myvar interface{}) string {
+	valueOf := reflect.ValueOf(myvar)
+	if valueOf.Type().Kind() == reflect.Ptr {
+		return reflect.Indirect(valueOf).Type().Name()
+	} else {
+		return valueOf.Type().Name()
+	}
+}
