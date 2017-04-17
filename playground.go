@@ -39,15 +39,14 @@ func main() {
 		log.Fatal(err)
 	}*/
 
+	//Testing if Firebase implements DBcontract
+	var db database.DBcontract = database.Firebase{}
+	db.Save(*institution.New("a","a",4.4))
+
 	var v map[string]interface{}
 	if err := f.Value(&v); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%s\n", v)
-
-
-	//Testing if Firebase implements DBcontract
-	var db database.DBcontract = database.Firebase{}
-	db.Save(institution.New("a","a",4.4))
 
 }

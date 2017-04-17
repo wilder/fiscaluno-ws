@@ -2,13 +2,27 @@ package database
 
 import (
 	"fmt"
+	"github.com/zabawaba99/firego"
+	"reflect"
+	"log"
 )
 
 type Firebase struct {
 }
 
+//creates a new node on firebase of the object passed as argument
+//parameter: Any struct
 func (fb Firebase) Save(object interface{}) {
-	fmt.Print("saving...")
+	nodeName := getType(object)
+	ref := firego.New("https://***REMOVED***/"+nodeName, nil)
+
+	_, err := ref.Push(object)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Print("saving...")
+	log.Print("saved new "+nodeName)
 }
 
 func (fb Firebase) Update(newValue, conditions[] interface{}) {
