@@ -6,6 +6,7 @@ import (
 	"github.com/zabawaba99/firego"
 	"reflect"
 	"log"
+	"fiscaluno-ws/database/filter"
 )
 
 type firebase struct {
@@ -36,8 +37,8 @@ func (fb firebase) Save(object interface{}) {
 	log.Print("saved new "+nodeName)
 }
 
-func (fb firebase) Update(newValue, conditions[] interface{}) {
-	fmt.Print("updating...")
+func (fb firebase) Update(newValue, conditions[] filter.Filter) {
+	log.Print("updating...")
 }
 
 func (fb firebase) Find(node string, conditions[] interface{}) interface{} {
