@@ -41,9 +41,29 @@ func (fb firebase) Update(newValue, conditions[] filter.Filter) {
 	log.Print("updating...")
 }
 
-func (fb firebase) Find(node string, conditions[] interface{}) interface{} {
-	fmt.Print("finding...")
-	return map[string]string{"foo": "1", "bar": "2"}
+//Creates a reference with the passed node name
+//iterates over the filter list and creates the
+//proper node reference
+func (fb firebase) Find(nodeName string, conditions[] filter.Filter) interface{} {
+	log.Print("finding..."+nodeName+"\n")
+	ref := firego.New("https://***REMOVED***/"+nodeName, nil)
+
+	var v map[string]interface{}
+	for _, element := range conditions {
+		fmt.Printf("operation: "+element.Operation)
+		if(element.Operation == "="){
+			//When the operation is =, the endAt and StartAt are equal
+			//Also, only one element will be retrieved, hence LimitToFirst(1)
+			//todo: find a way to add the Value() out of the loop
+			if err := ref.StartAt(element.Value).EndAt(element.Value).LimitToFirst(1).OrderBy(element.Name).Value(&v); err != nil {
+				log.Print("error")
+				log.Fatal(err)
+			}
+		}
+		//todo implement other filters
+	}
+
+	return v
 }
 
 func (fb firebase) Delete(conditions[] interface{}) {
