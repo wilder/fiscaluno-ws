@@ -12,6 +12,14 @@
 			"ImportPath": "github.com/emicklei/go-restful/log",
 			"Comment": "2.2.0-1-g1d2cd46",
 			"Rev": "1d2cd46e1ac9ce6036f014a33a3706f989578de6"
+		},
+		{
+			"ImportPath": "github.com/zabawaba99/firego",
+			"Rev": "2075c57adaabcc7836dca7c123170823b0de6a02"
+		},
+		{
+			"ImportPath": "github.com/zabawaba99/firego/sync",
+			"Rev": "2075c57adaabcc7836dca7c123170823b0de6a02"
 		}
 	]
 }
