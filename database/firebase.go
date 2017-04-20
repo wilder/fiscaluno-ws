@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"log"
 	"fiscaluno-ws/database/filter"
+	"fiscaluno-ws/config"
 )
 
 type firebase struct {
@@ -26,7 +27,8 @@ func GetInstance() firebase {
 //parameter: Any struct
 func (fb firebase) Save(object interface{}) {
 	nodeName := getType(object)
-	ref := firego.New("https://***REMOVED***/"+nodeName, nil)
+	//TODO: improve
+	ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
 
 	_, err := ref.Push(object)
 	if err != nil {
@@ -46,7 +48,8 @@ func (fb firebase) Update(newValue, conditions[] filter.Filter) {
 //proper node reference
 func (fb firebase) Find(nodeName string, conditions[] filter.Filter) interface{} {
 	log.Print("finding..."+nodeName+"\n")
-	ref := firego.New("https://***REMOVED***/"+nodeName, nil)
+	//TODO: improve
+	ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
 
 	var v map[string]interface{}
 	for _, element := range conditions {
