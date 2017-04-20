@@ -1,24 +1,23 @@
-## Para gerar o executável
-   > go build
-## e depois servir em alguma porta
-   > PORT=5000 ./fiscaluno-ws
-## rodar para salvar as dependências (usado pelo heroku)
-   > godep save
+# Fiscaluno-ws
+Repositório para a criação do webservice do projeto Fiscaluno.
 
-**Prestar atenção no gopath, tive vários problemas com ele.**
+# Antes de começar...
 
-## Executar para adicionar a dependencia ao SEU gopath
-   > go install *pacoteOuDependencia* 
+## Crie um arquivo config.json e adicione-o ao ``.gitignore``
+   Por segurança, não há referência sobre a url do firebase, portanto, criar um arquivo chamado ``config.json`` com a url do projeto. 
+ 
+   Obs: Adicionar o arquivo `config.json` e adicionar no ``.gitignore``. Não utilizar os comandos ``git add .`` nem ``git commit -a``
 
-**O nome do arquivo.go deve ser o mesmo que o da última pasta em que ele está contido, assim como o seu pacote**
+### Para gerar o executável
+   Execute o comando `` go build``
+### e depois sirva em alguma porta
+   `` PORT=5000 ./fiscaluno-ws``
 
-Ex: Olhar o institutionservice
+## Dependências
+   Executar o comando ``godep save`` antes de subir no heroku.
 
 ### links úteis:
 - http://ernestmicklei.com/2012/11/go-restful-first-working-example/
 - http://labix.org/mgo
 - https://golang.org/doc/code.html
 - https://mmcgrana.github.io/2012/09/getting-started-with-go-on-heroku.html
-- http://stackoverflow.com/questions/15049903/how-to-use-custom-packages-in-golang
-- http://stackoverflow.com/questions/13214029/go-build-cannot-find-package-even-though-gopath-is-set
-
