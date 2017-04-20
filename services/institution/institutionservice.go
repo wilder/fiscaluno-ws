@@ -2,7 +2,6 @@ package institution
 
 import (
     "github.com/emicklei/go-restful"
-    "fiscaluno-ws/models/institution"
     "fiscaluno-ws/dao/institutiondao"
 )
 
@@ -26,8 +25,9 @@ func FindInstitution(request *restful.Request, response *restful.Response) {
     response.WriteEntity(institution)
 }
 
+// Get institution rate by institution Id
 func GetInstitutionRate(request *restful.Request, response *restful.Response) {
     id := request.PathParameter("institution-id")
-    inst := institution.New(id, "faculdade impacta", 5.4)
-    response.WriteEntity(inst.Rate)
+    institution := institutiondao.FindInstitutionById(id)
+    response.WriteEntity(institution.Rate)
 }
