@@ -3,10 +3,10 @@ Repositório para a criação do webservice do projeto Fiscaluno.
 
 # Antes de começar...
 
-## Crie um arquivo config.json e adicione-o ao ``.gitignore``
-   Por segurança, não há referência sobre a url do firebase, portanto, criar um arquivo chamado ``config.json`` com a url do projeto. 
+## Crie um arquivo conf.json e adicione-o ao ``.gitignore``
+   Por segurança, não há referência sobre a url do firebase, portanto, criar um arquivo chamado ``conf.json`` com a url do projeto. 
  
-   Obs: Adicionar o arquivo `config.json` e adicionar no ``.gitignore``. Não utilizar os comandos ``git add .`` nem ``git commit -a``
+   Obs: Adicionar o arquivo `conf.json` e adicionar no ``.gitignore``. Não utilizar os comandos ``git add .`` nem ``git commit -a``
 
 ### Para gerar o executável
    Execute o comando `` go build``
