@@ -4,8 +4,8 @@ import (
     "fmt"
     "net/http"
     "os"
-    "fiscaluno-ws/services/institution"
     "github.com/emicklei/go-restful"
+    "fiscaluno-ws/controllers/institution"
 )
 
 func main() {
