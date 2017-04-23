@@ -2,6 +2,7 @@ package institutionrouter
 
 import (
     "github.com/emicklei/go-restful"
+    "fiscaluno-ws/controllers/institution"
 )
 
 func New() *restful.WebService {
@@ -11,8 +12,8 @@ func New() *restful.WebService {
         Consumes(restful.MIME_JSON, restful.MIME_JSON).
         Produces(restful.MIME_JSON, restful.MIME_JSON)
         
-    service.Route(service.GET("/{institution-id}").To(FindInstitution))
-    service.Route(service.GET("/rate/{institution-id}").To(GetInstitutionRate))
+    service.Route(service.GET("/{institution-id}").To(institution.FindInstitution))
+    service.Route(service.GET("/rate/{institution-id}").To(institution.GetInstitutionRate))
         
     return service
 }

@@ -5,13 +5,13 @@ import (
     "net/http"
     "os"
     "github.com/emicklei/go-restful"
-    "fiscaluno-ws/controllers/institution"
+    "fiscaluno-ws/routes/institutionrouter"
 )
 
 func main() {
     http.HandleFunc("/", hello)
     fmt.Println("listening...")
-    restful.Add(institution.New())
+    restful.Add(institutionrouter.New())
     err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
     if err != nil {
       panic(err)
