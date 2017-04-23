@@ -15,6 +15,5 @@ func FindInstitution(request *restful.Request, response *restful.Response) {
 // Get institution rate by institution Id
 func GetInstitutionRate(request *restful.Request, response *restful.Response) {
 	id := request.PathParameter("institution-id")
-	institution := findInstitution(id)
-	response.WriteEntity(institution.Rate)
+	response.WriteEntity(getRate(id))
 }

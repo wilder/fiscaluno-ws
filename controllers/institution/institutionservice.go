@@ -7,6 +7,15 @@ import (
 )
 
 func findInstitution(id string) *institution.Institution{
+    return getInstitutionById(id)
+}
+
+func getRate(id string) float32 {
+    inst := getInstitutionById(id)
+    return inst.Rate
+}
+
+func getInstitutionById(id string) *institution.Institution{
     institution_interface := institutiondao.FindInstitutionById(id)
     inst := &institution.Institution{}
     utils.FirebaseToStruct(institution_interface, inst)
