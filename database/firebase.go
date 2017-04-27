@@ -46,26 +46,31 @@ func (fb firebase) Update(newValue, conditions[] filter.Filter) {
 //Creates a reference with the passed node name
 //iterates over the filter list and creates the
 //proper node reference
+
 func (fb firebase) Find(nodeName string, conditions[] filter.Filter) interface{} {
 	log.Print("finding..."+nodeName+"\n")
 	//TODO: improve
 	ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
-
+	fmt.Println("https://"+config.FirebaseUrl()+"/"+nodeName)
+	var err error
 	var v map[string]interface{}
-	for _, element := range conditions {
-		fmt.Printf("operation: "+element.Operation)
-		if(element.Operation == "="){
+	if conditions != nil{
+		var mainCondition = conditions[0]
+		fmt.Printf("maincondition: ", mainCondition)
+		if(conditions[0].Operation == "="){
 			//When the operation is =, the endAt and StartAt are equal
 			//Also, only one element will be retrieved, hence LimitToFirst(1)
-			//todo: find a way to add the Value() out of the loop
-			if err := ref.StartAt(element.Value).EndAt(element.Value).LimitToFirst(1).OrderBy(element.Name).Value(&v); err != nil {
-				log.Print("error")
-				log.Fatal(err)
-			}
+			err = ref.StartAt(mainCondition.Value).EndAt(mainCondition.Value).LimitToFirst(1).OrderBy(mainCondition.Name).Value(&v);
 		}
-		//todo implement other filters
+	}else{
+		err = ref.Value(&v)
+		fmt.Println("v ", v)
 	}
 
+	if err != nil {
+		log.Panic(err)
+		return err
+	}
 	return v
 }
 
