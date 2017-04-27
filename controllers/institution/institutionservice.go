@@ -21,3 +21,7 @@ func getInstitutionById(id string) *institution.Institution{
     utils.FirebaseToStruct(institution_interface, inst)
     return inst
 }
+
+func CreateNewInstitution(id string, name string, rate float32) {
+    institutiondao.CreateInstitution( institution.New(id, name, rate) )
+}
