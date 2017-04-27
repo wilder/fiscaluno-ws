@@ -1,4 +1,4 @@
-package controllers
+package generic
 
 import "fiscaluno-ws/database"
 

@@ -1,6 +1,7 @@
-package controllers
+package generic
 
+//Returns all node values. Equivalent to Select * from xtablex;
 func getAll(node string) interface{} {
-	generic_interface := getAllValues(node)
-	return generic_interface
+	values := getAllValues(node)
+	return values
 }
