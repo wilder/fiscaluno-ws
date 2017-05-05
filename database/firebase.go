@@ -25,16 +25,22 @@ func GetInstance() firebase {
 
 //creates a new node on firebase of the object passed as argument
 //parameter: Any struct
-func (fb firebase) Save(object interface{}) {
+func (fb firebase) Save(object interface{}, ref ...string) {
 	nodeName := getType(object)
-	//TODO: improve
-	ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
+	var err error
 
-	_, err := ref.Push(object)
+	if( (len(ref) > 0) && (ref[0] != "") ){
+		ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName+"/"+ref[0], nil)
+		err = ref.Set(object)
+	}else{
+		ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
+		_, err = ref.Push(object)
+	}
+
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	
 	log.Print("saving...")
 	log.Print("saved new "+nodeName)
 }
