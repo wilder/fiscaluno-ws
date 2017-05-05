@@ -5,7 +5,7 @@ import (
     "fiscaluno-ws/database/filter"
 )
 
-var db database.DBcontract = database.GetInstance()
+var db = database.GetInstance()
 
 func FindInstitutionById (id string) interface {}{
     var filterList = [] filter.Filter{*filter.New("Id", id, "=")}
@@ -13,5 +13,5 @@ func FindInstitutionById (id string) interface {}{
 }
 
 func CreateInstitution(institution interface{}) {
-    db.Save(institution)
+    db.Save(institution, false)
 }
