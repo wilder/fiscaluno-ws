@@ -25,10 +25,13 @@ func getInstitutionById(id string) (*institution.Institution, error){
     institution_interface, err := institutiondao.FindInstitutionById(id)
 
     inst := &institution.Institution{}
-
     if err == nil {
 	err = utils.FirebaseToStruct(institution_interface, inst)
 
     }
     return inst, err
+}
+
+func CreateNewInstitution(id string, name string, rate float32) {
+    institutiondao.CreateInstitution(institution.New(id, name, rate) )
 }
