@@ -15,7 +15,7 @@ Id
 		idAluno
  */
 
-type GeneralRate struct {
+type DetailedRate struct {
 	Id string
 	Description string
 	Category string
@@ -27,8 +27,8 @@ type GeneralRate struct {
 }
 
 // Institution constructor
-func New(id, desc, category, ratedBy string, rate float32, institution institution.Institution) *GeneralRate {
-	return &GeneralRate{
+func New(id, desc, category, ratedBy string, rate float32, institution institution.Institution) *DetailedRate {
+	return &DetailedRate{
 		Id:id,
 		Description:desc,
 		Rate:rate,

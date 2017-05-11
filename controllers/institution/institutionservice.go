@@ -1,8 +1,10 @@
 package institution
 
 import (
+    "fiscaluno-ws/models/rate/detailed"
     "fiscaluno-ws/models/institution"
     "fiscaluno-ws/dao/institutiondao"
+    "fiscaluno-ws/dao/detailedratedao"
     "fiscaluno-ws/utils"
 )
 
@@ -34,4 +36,9 @@ func getInstitutionById(id string) (*institution.Institution, error){
 
 func CreateNewInstitution(id string, name string, rate float32) {
     institutiondao.CreateInstitution(institution.New(id, name, rate) )
+}
+
+func SaveDetailedRateForInstitution(institution institution.Institution) {
+    detailed := specific.New("Id", "Desc", "Cat", "RatedBy", 1.2, institution)
+    detailedratedao.CreateDetailedRate(detailed)
 }
