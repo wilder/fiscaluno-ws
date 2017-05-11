@@ -2,13 +2,15 @@ package utils
 
 import (
 	"github.com/mitchellh/mapstructure"
+	"errors"
 )
 
 //removes firebase generated id
 //params: firebaseData the data from firebase
 //	  structTypeReference the reference of the struct type
-func FirebaseToStruct(firebaseData interface{}, structTypeReference interface{}) {
+func FirebaseToStruct(firebaseData interface{}, structTypeReference interface{}) error {
 
+	var err error
 	//removing the firebase node
 	node :=  firebaseData.(map[string] interface{})
 
@@ -24,5 +26,15 @@ func FirebaseToStruct(firebaseData interface{}, structTypeReference interface{})
 	}
 
 	//Converts the firebase data to the struct
-	mapstructure.Decode(keys[0].(map[string] interface{}), structTypeReference)
+	firebaseVal := keys[0]
+
+	if firebaseVal != nil {
+		err = mapstructure.Decode(firebaseVal.(map[string] interface{}), structTypeReference)
+	} else {
+		//TODO: Maybe mobe to error generator class?
+		err = errors.New("No Data Found")
+	}
+
+	return err
+
 }

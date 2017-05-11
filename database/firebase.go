@@ -47,7 +47,7 @@ func (fb firebase) Update(newValue, conditions[] filter.Filter) {
 //iterates over the filter list and creates the
 //proper node reference
 
-func (fb firebase) Find(nodeName string, conditions[] filter.Filter) interface{} {
+func (fb firebase) Find(nodeName string, conditions[] filter.Filter) (interface{}, error) {
 	log.Print("finding..."+nodeName+"\n")
 	//TODO: improve
 	ref := firego.New("https://"+config.FirebaseUrl()+"/"+nodeName, nil)
@@ -67,11 +67,7 @@ func (fb firebase) Find(nodeName string, conditions[] filter.Filter) interface{}
 		fmt.Println("v ", v)
 	}
 
-	if err != nil {
-		log.Panic(err)
-		return err
-	}
-	return v
+	return v, err
 }
 
 func (fb firebase) Delete(conditions[] interface{}) {
