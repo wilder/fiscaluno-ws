@@ -70,11 +70,12 @@ func (fb firebase) Find(nodeName string, conditions[] filter.Filter) (interface{
 		if(conditions[0].Operation == "="){
 			//When the operation is =, the endAt and StartAt are equal
 			//Also, only one element will be retrieved, hence LimitToFirst(1)
-			err = ref.StartAt(mainCondition.Value).EndAt(mainCondition.Value).LimitToFirst(1).OrderBy(mainCondition.Name).Value(&v);
+			err = ref.StartAt(mainCondition.Value).EndAt(mainCondition.Value).OrderBy(mainCondition.Name).Value(&v);
+			fmt.Println("error1:  ", err)
 		}
 	}else{
 		err = ref.Value(&v)
-		fmt.Println("v ", v)
+		fmt.Println("error:  ", v)
 	}
 
 	return v, err
