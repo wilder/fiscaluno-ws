@@ -9,7 +9,7 @@ import (
 )
 
 func findInstitution(id string) (interface{}){
-    val, err := getInstitutionById(id)
+    val, err := GetInstitutionById(id)
     if err != nil {
 	    //TODO create error struct
 	    return err.Error()
@@ -19,11 +19,11 @@ func findInstitution(id string) (interface{}){
 
 //TODO: Return map instead of single value
 func getRate(id string) (float32) {
-    inst, _ := getInstitutionById(id)
+    inst, _ := GetInstitutionById(id)
     return inst.Rate
 }
 
-func getInstitutionById(id string) (*institution.Institution, error){
+func GetInstitutionById(id string) (*institution.Institution, error){
     institution_interface, err := institutiondao.FindInstitutionById(id)
 
     inst := &institution.Institution{}

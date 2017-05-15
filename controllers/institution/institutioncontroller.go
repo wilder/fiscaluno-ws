@@ -30,7 +30,7 @@ func NewInstitution(request *restful.Request, response *restful.Response) {
 
 func NewDetailedRateForInstitution(request *restful.Request, response *restful.Response) {
       institution_id := request.PathParameter("institution-id")
-      stored_institution, _ := getInstitutionById(institution_id)
+      stored_institution, _ := GetInstitutionById(institution_id)
       SaveDetailedRateForInstitution(*stored_institution)
       response.WriteEntity("opa")
 }
