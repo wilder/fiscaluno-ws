@@ -1,5 +1,6 @@
 # Fiscaluno-ws
 Repositório para a criação do webservice do projeto Fiscaluno.
+Documentação: https://goo.gl/BU3Rbw
 
 # Antes de começar...
 
