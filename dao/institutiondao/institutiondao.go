@@ -15,3 +15,7 @@ func FindInstitutionById (id string) (interface {}, error) {
 func CreateInstitution(institution interface{}) {
     db.Save(institution, false)
 }
+
+func UpdateInstitution(institution interface{}) {
+    db.Save(institution, true)
+}
