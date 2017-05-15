@@ -13,13 +13,17 @@ func getRatingByUser(filter[] filter.Filter) (interface{}, error) {
 	return detailedratedao.GetRatingsByUserId(filter)
 }
 
-func newGeneralRate(rate general.GeneralRate) {
-	detailedratedao.NewGeneralRate(rate)
+func newGeneralRate(rate general.GeneralRate) (error) {
+	err := detailedratedao.NewGeneralRate(rate)
 	log.Print("rate's institution id: ", rate.Institution.Id)
 
-	//updates the rate in the institution node
-	institution, _ := institution.GetInstitutionById(rate.Institution.Id)
-	//TODO: consider rating count
-	institution.Rate += rate.Rate
-	institutiondao.UpdateInstitution(institution)
+	if err != nil {
+		//updates the rate in the institution node
+		institution, _ := institution.GetInstitutionById(rate.Institution.Id)
+		//TODO: consider rating count
+		institution.Rate += rate.Rate
+		err = institutiondao.UpdateInstitution(institution)
+	}
+
+	return err
 }

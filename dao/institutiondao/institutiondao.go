@@ -12,10 +12,11 @@ func FindInstitutionById (id string) (interface {}, error) {
     return db.Find("Institution", filterList)
 }
 
+//TODO: make return error
 func CreateInstitution(institution interface{}) {
     db.Save(institution, false)
 }
 
-func UpdateInstitution(institution interface{}) {
-    db.Save(institution, true)
+func UpdateInstitution(institution interface{}) error{
+    return db.Save(institution, true)
 }

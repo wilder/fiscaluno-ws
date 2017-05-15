@@ -16,9 +16,6 @@ func GetRatingsByUserId(conditions[] filter.Filter) (interface{}, error) {
     return db.Find("DetailedRate", conditions)
 }
 
-func NewGeneralRate(rate general.GeneralRate) {
-    db.Save(rate, false)
-
-
-    db.Save()
+func NewGeneralRate(rate general.GeneralRate) (error){
+    return db.Save(rate, false)
 }

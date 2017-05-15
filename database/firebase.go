@@ -25,7 +25,7 @@ func GetInstance() firebase {
 
 //creates a new node on firebase of the object passed as argument
 //parameter: Any struct
-func (fb firebase) Save(object interface{}, overwriteNode bool, ref ...string) {
+func (fb firebase) Save(object interface{}, overwriteNode bool, ref ...string) (error) {
 	nodeName := getType(object)
 	var err error
 
@@ -47,6 +47,8 @@ func (fb firebase) Save(object interface{}, overwriteNode bool, ref ...string) {
 	
 	log.Print("saving...")
 	log.Print("saved new "+nodeName)
+
+	return err
 }
 
 func (fb firebase) Update(newValue, conditions[] filter.Filter) {

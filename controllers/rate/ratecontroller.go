@@ -4,6 +4,7 @@ import (
 	"github.com/emicklei/go-restful"
 	"fiscaluno-ws/database/filter"
 	"fiscaluno-ws-bkp/models/rate/general"
+	"log"
 )
 
 // Gets all ratings by user id
@@ -22,10 +23,15 @@ func RatedBy(request *restful.Request, response *restful.Response) {
 func GeneralRate(request *restful.Request, response *restful.Response) {
 	rate := new(general.GeneralRate)
 	err := request.ReadEntity(&rate)
-	newGeneralRate(rate)
-	if err != nil {
-		response.WriteEntity(err)
-	} else {
-		response.WriteEntity(response.StatusCode())
+	//TODO: need improvement on error checking
+	if err == nil {
+		err = newGeneralRate(*rate)
+		if err != nil {
+			response.WriteEntity(err)
+		} else {
+			response.WriteEntity(response.StatusCode())
+		}
+	}else {
+		log.Panic(err)
 	}
 }
