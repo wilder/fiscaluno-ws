@@ -3,7 +3,7 @@ package detailedratedao
 import (
     "fiscaluno-ws/database"
     "fiscaluno-ws/database/filter"
-    "fiscaluno-ws-bkp/models/rate/general"
+    "fiscaluno-ws/models/rate/general"
 )
 
 var db = database.GetInstance()

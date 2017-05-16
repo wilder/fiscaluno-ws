@@ -3,7 +3,7 @@ package rate
 import (
 	"fiscaluno-ws/database/filter"
 	"fiscaluno-ws/dao/detailedratedao"
-	"fiscaluno-ws-bkp/models/rate/general"
+	"fiscaluno-ws/models/rate/general"
 	"fiscaluno-ws/controllers/institution"
 	"log"
 	"fiscaluno-ws/dao/institutiondao"

@@ -3,7 +3,7 @@ package rate
 import (
 	"github.com/emicklei/go-restful"
 	"fiscaluno-ws/database/filter"
-	"fiscaluno-ws-bkp/models/rate/general"
+	"fiscaluno-ws/models/rate/general"
 	"log"
 )
 

@@ -1,7 +1,6 @@
 package general
 
 import (
-	"fiscaluno-ws/models/institution"
 	"time"
 )
 
