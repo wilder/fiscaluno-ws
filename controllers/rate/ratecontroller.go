@@ -4,6 +4,7 @@ import (
 	"github.com/emicklei/go-restful"
 	"fiscaluno-ws/database/filter"
 	"fiscaluno-ws/models/rate/general"
+	"fiscaluno-ws/models/rate/detailed"
 	"log"
 )
 
@@ -32,6 +33,22 @@ func GeneralRate(request *restful.Request, response *restful.Response) {
 			response.WriteEntity(response.StatusCode())
 		}
 	}else {
+		log.Panic(err)
+	}
+}
+
+func NewDetailedRateForInstitution(request *restful.Request, response *restful.Response) {
+	rate := new(specific.DetailedRate)
+	err := request.ReadEntity(&rate)
+
+	if err == nil {
+		err = newDetailedRate(*rate)
+		if err != nil {
+			response.WriteEntity(err)
+		} else {
+			response.WriteEntity(response.StatusCode())
+		}
+	} else {
 		log.Panic(err)
 	}
 }

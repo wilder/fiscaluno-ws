@@ -28,8 +28,3 @@ func NewInstitution(request *restful.Request, response *restful.Response) {
       response.WriteEntity("Instituição inserida com sucesso")
 }
 
-func NewDetailedRateForInstitution(request *restful.Request, response *restful.Response) {
-      institution_id := request.PathParameter("institution-id")
-      SaveDetailedRateForInstitution(institution_id)
-      response.WriteEntity("opa")
-}
