@@ -2,7 +2,6 @@ package specific
 
 import (
 	"time"
-	"fiscaluno-ws/models/institution"
 )
 
 /*
@@ -21,13 +20,13 @@ type DetailedRate struct {
 	Category string
 	Rate float32
 	RatedBy string
-	Institution institution.Institution
-	//Course course.Course
+	Institution string
+	Course string
 	RatedAt time.Time
 }
 
 // Institution constructor
-func New(id, desc, category, ratedBy string, rate float32, institution institution.Institution) *DetailedRate {
+func New(id, desc, category, ratedBy string, rate float32, institution string, course string) *DetailedRate {
 	return &DetailedRate{
 		Id:id,
 		Description:desc,
@@ -35,6 +34,7 @@ func New(id, desc, category, ratedBy string, rate float32, institution instituti
 		Category: category,
 		RatedBy:ratedBy,
 		Institution: institution,
+		Course: course,
 		RatedAt: time.Now(),
 	}
 }

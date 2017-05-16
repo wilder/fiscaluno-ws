@@ -38,7 +38,7 @@ func CreateNewInstitution(id string, name string, rate float32) {
     institutiondao.CreateInstitution(institution.New(id, name, rate) )
 }
 
-func SaveDetailedRateForInstitution(institution institution.Institution) {
-    detailed := specific.New("Id", "Desc", "Cat", "RatedBy", 1.2, institution)
+func SaveDetailedRateForInstitution(institution string) {
+    detailed := specific.New("Id", "Desc", "Cat", "RatedBy", 1.2, institution, "S.I")
     detailedratedao.CreateDetailedRate(detailed)
 }
