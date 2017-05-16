@@ -7,6 +7,10 @@ import (
     "fiscaluno-ws/controllers/rate"
 )
 
+const (
+    WS_CONSUMES_DATA_TYPE = "application/x-www-form-urlencoded"
+)
+
 func New() *restful.WebService {
     service := new(restful.WebService)
     service.
