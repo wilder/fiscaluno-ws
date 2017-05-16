@@ -24,7 +24,8 @@ func New() *restful.WebService {
     service.Route(service.GET("/all/{node}").To(generic.FindAll))
 
     service.Route(service.GET("/institution/new/{institution-id}/{institution-name}/{institution-rate}").To(institution.NewInstitution))
-    service.Route(service.GET("/rate/newdetailed/{institution-id}").To(institution.NewDetailedRateForInstitution))
+
+    service.Route(service.POST("/rate/detailed").To(rate.NewDetailedRateForInstitution))
     service.Route(service.POST("/rate/general").To(rate.GeneralRate))
         
     return service
