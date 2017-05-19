@@ -33,13 +33,5 @@ func newDetailedRate(rate specific.DetailedRate) (error) {
 	err := detailedratedao.CreateDetailedRate(rate)
 	log.Print("rate's institution id: ", rate.Institution)
 
-	if err != nil {
-		//updates the rate in the institution node
-		institution, _ := institution.GetInstitutionById(rate.Institution)
-		//TODO: consider rating count
-		institution.Rate += rate.Rate
-		err = institutiondao.UpdateInstitution(institution)
-	}
-
 	return err
 }
