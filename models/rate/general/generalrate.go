@@ -1,7 +1,6 @@
 package general
 
 import (
-	"fiscaluno-ws/models/institution"
 	"time"
 )
 
@@ -10,13 +9,13 @@ type GeneralRate struct {
 	Description string
 	Rate float32
 	RatedBy string
-	Institution institution.Institution
+	Institution string
 	//Course course.Course
 	RatedAt time.Time
 }
 
 // Institution constructor
-func New(id, desc, ratedBy string, rate float32, institution institution.Institution) *GeneralRate {
+func New(id, desc, ratedBy string, rate float32, institution string) *GeneralRate {
 	return &GeneralRate{
 		Id:id,
 		Description:desc,

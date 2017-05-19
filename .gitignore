@@ -1,2 +1,6 @@
 playground.go
 conf.json
+.idea/
+passwords.txt
+.git.bfg-report/
+fiscaluno-ws

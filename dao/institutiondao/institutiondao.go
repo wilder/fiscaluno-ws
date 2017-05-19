@@ -1,22 +1,22 @@
 package institutiondao
 
 import (
-    "strconv"
     "fiscaluno-ws/database"
     "fiscaluno-ws/database/filter"
-    "fiscaluno-ws/models/institution"
 )
 
-var db database.DBcontract = database.GetInstance()
+var db = database.GetInstance()
 
-func FindInstitutionById (id string) *institution.Institution {
+func FindInstitutionById (id string) (interface {}, error) {
     var filterList = [] filter.Filter{*filter.New("Id", id, "=")}
-    institution_node := db.Find("Institution", filterList).(map[string] interface{})
-    
-    for key := range institution_node {
-        institution_node = institution_node[key].(map[string] interface{})
-    }
+    return db.Find("Institution", filterList)
+}
 
-    institution_id := strconv.FormatFloat( institution_node["Id"].(float64), 'f', 1, 64 )
-    return  institution.New(  institution_id, institution_node["Name"].(string), float32( institution_node["Rate"].(float64) ) )
+//TODO: make return error
+func CreateInstitution(institution interface{}) {
+    db.Save(institution, false)
+}
+
+func UpdateInstitution(institution interface{}) error{
+    return db.Save(institution, true)
 }

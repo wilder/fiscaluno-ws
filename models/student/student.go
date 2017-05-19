@@ -2,22 +2,22 @@ package student
 
 import (
     "fiscaluno-ws/models/institution"
-    "fiscaluno-ws/models/rate/general"
 )
 
 type Student struct {
             Id string
             Name string
-            Institution institution.Institution
-            GeneralRate general.GeneralRate
+            Institution string
+            Course string
 }
 
+
 // Student Constructor
-func New(Id string, Name string, Institution institution.Institution, GeneralRate general.GeneralRate) *Student {
+func New(Id string, Name string, Institution institution.Institution, course string) *Student {
             return &Student{
                 Id: Id,
                 Name: Name,
                 Institution: Institution,
-                GeneralRate: GeneralRate,
+                Course: course,
             }
 }

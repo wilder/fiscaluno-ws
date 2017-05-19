@@ -5,6 +5,7 @@ type Institution struct {
     Id string
     Name string
     Rate float32
+    //TODO: add rating count
 }
 
 // Institution constructor
