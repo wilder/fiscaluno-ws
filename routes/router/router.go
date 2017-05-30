@@ -5,6 +5,7 @@ import (
     "fiscaluno-ws/controllers/institution"
     "fiscaluno-ws/controllers/generic"
     "fiscaluno-ws/controllers/rate"
+    "fiscaluno-ws/controllers/student"
 )
 
 const (
@@ -19,7 +20,7 @@ func New() *restful.WebService {
         Produces(restful.MIME_JSON, restful.MIME_JSON)
         
     service.Route(service.GET("/institution/{institution-id}").To(institution.FindInstitution))
-    service.Route(service.GET("/rate/{institution-id}").To(institution.GetInstitutionRate))
+    service.Route(service.GET("/institution/rate/{institution-id}").To(institution.GetInstitutionRate))
     service.Route(service.GET("/rate/{user-id}").To(rate.RatedBy))
     service.Route(service.GET("/all/{node}").To(generic.FindAll))
 
@@ -27,6 +28,8 @@ func New() *restful.WebService {
 
     service.Route(service.POST("/rate/detailed").To(rate.NewDetailedRateForInstitution))
     service.Route(service.POST("/rate/general").To(rate.GeneralRate))
+
+    service.Route(service.POST("/student/new").To(student.CreateNewStudent))
         
     return service
 }

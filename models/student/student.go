@@ -1,7 +1,7 @@
 package student
 
 import (
-    "fiscaluno-ws/models/institution"
+    _"fiscaluno-ws/models/institution"
 )
 
 type Student struct {
@@ -13,7 +13,7 @@ type Student struct {
 
 
 // Student Constructor
-func New(Id string, Name string, Institution institution.Institution, course string) *Student {
+func New(Id string, Name string, Institution string, course string) *Student {
             return &Student{
                 Id: Id,
                 Name: Name,
