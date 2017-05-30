@@ -14,6 +14,10 @@
 			"Rev": "1d2cd46e1ac9ce6036f014a33a3706f989578de6"
 		},
 		{
+			"ImportPath": "github.com/mitchellh/mapstructure",
+			"Rev": "cc8532a8e9a55ea36402aa21efdf403a60d34096"
+		},
+		{
 			"ImportPath": "github.com/zabawaba99/firego",
 			"Rev": "2075c57adaabcc7836dca7c123170823b0de6a02"
 		},
