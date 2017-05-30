@@ -20,7 +20,7 @@ func New() *restful.WebService {
         Produces(restful.MIME_JSON, restful.MIME_JSON)
         
     service.Route(service.GET("/institution/{institution-id}").To(institution.FindInstitution))
-    service.Route(service.GET("/rate/{institution-id}").To(institution.GetInstitutionRate))
+    service.Route(service.GET("/institution/rate/{institution-id}").To(institution.GetInstitutionRate))
     service.Route(service.GET("/rate/{user-id}").To(rate.RatedBy))
     service.Route(service.GET("/all/{node}").To(generic.FindAll))
 
